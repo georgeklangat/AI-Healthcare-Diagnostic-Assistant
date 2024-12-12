@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up | Healthcare Diagnosis Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <style>
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Create Your Account</h1>
+    </header>
+
+    <main>
+        <section class="signup-form">
+            <form action="{% url 'signup' %}" method="POST">
+                {% csrf_token %}
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="error">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+
+                <label for="password2">Confirm Password:</label>
+                <input type="password" id="password2" name="password2" required><br>
+
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                </select><br>
+
+                <!-- Doctor ID field -->
+                <div id="doctor-id-field" class="hidden">
+                    <label for="doctor-id">Doctor ID Number:</label>
+                    <input type="text" id="doctor-id" name="doctor_id" placeholder="Enter Doctor ID number"><br>
+                </div>
+
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+    </footer>
+
+    <script>
+        document.getElementById('role').addEventListener('change', function () {
+            const doctorIdField = document.getElementById('doctor-id-field');
+            if (this.value === 'doctor') {
+                doctorIdField.classList.remove('hidden');
+            } else {
+                doctorIdField.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

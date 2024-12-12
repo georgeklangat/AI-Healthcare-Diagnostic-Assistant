@@ -1,0 +1,43 @@
+<!-- patient_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>List of Patients</h1>
+        <p>Select a patient to view their diagnosis results.</p>
+    </header>
+
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for case in patient_cases %}
+                    <tr>
+                        <td>{{ case.patient.id }}</td>
+                        <td>{{ case.patient.name }}</td>
+                        <td>{{ case.status }}</td>
+                        <td><a href="/diagnosis/{{ case.patient.id }}">View Diagnosis</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <a href="/dashboard">Back to Dashboard</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- no_diagnosis.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Diagnosis Found</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>No Diagnosis Found for {{ patient.name }}</h1>
+    </header>
+
+    <section>
+        <p>There is currently no diagnosis available for this patient. Please check back later or initiate a new diagnosis process.</p>
+    </section>
+
+    <footer>
+        <a href="/dashboard">Back to Dashboard</a>
+    </footer>
+</body>
+</html>

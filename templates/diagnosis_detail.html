@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Diagnosis Results - {{ patient.name }}</title>
+    <link rel="stylesheet" href="{% static 'assets/css/diagnosis_detail.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Diagnosis Results for {{ patient.name }}</h1>
+        <p>Status: <strong>{{ diagnosis.status }}</strong></p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Patient Information</h2>
+            <p><strong>Patient ID:</strong> {{ patient.id }}</p>
+            <p><strong>Age:</strong> {{ patient.age }} years</p>
+            <p><strong>Gender:</strong> {{ patient.gender }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Diagnosis Details</h2>
+            <p><strong>Symptoms:</strong> {{ diagnosis.symptoms }}</p>
+            <p><strong>Diagnosis:</strong> {{ diagnosis.diagnosis }}</p>
+            <p><strong>Treatment Recommendations:</strong> {{ diagnosis.treatment }}</p>
+            <p><strong>Status:</strong> {{ diagnosis.status }}</p>
+        </div>
+
+        <div class="card next-steps">
+            <h2>Next Steps</h2>
+            <ul>
+                <li><a href="{{ predict_view }}" class="btn">View Test Results</a></li>
+                <li><a href="{{ diagnosis.next_steps.url }}" class="btn">Schedule Follow-up</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+        <a href="/dashboard">Back to Dashboard</a>
+    </footer>
+
+    <script>
+        // Interactive behavior example
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseover', function() {
+                this.style.backgroundColor = '#002f5d'; /* Even darker blue */
+            });
+            button.addEventListener('mouseout', function() {
+                this.style.backgroundColor = '#0056b3';
+            });
+        });
+    </script>
+</body>
+</html>

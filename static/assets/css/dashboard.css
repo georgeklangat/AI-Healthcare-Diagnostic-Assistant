@@ -1,0 +1,208 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and layout styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header styling */
+header {
+    background-color: #00796b; /* Teal green */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+/* Main content styles */
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #00796b; /* Teal green for section headers */
+    font-size: 1.8em;
+}
+
+/* Doctor Dashboard styles */
+.doctor-dashboard, .notifications, .diagnosis-links {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #00796b; /* Teal green */
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+.view-btn {
+    padding: 8px 16px;
+    background-color: #28a745; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.view-btn:hover {
+    background-color: #218838; /* Darker green for hover */
+}
+
+/* Notifications Section */
+.notifications ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.notifications li {
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* Diagnosis Links */
+.diagnosis-links ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.diagnosis-links li {
+    margin-bottom: 10px;
+}
+
+.diagnosis-links a {
+    color: #00796b; /* Teal green */
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.diagnosis-links a:hover {
+    text-decoration: underline;
+}
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #00796b; /* Teal green hover */
+}
+
+/* Modal content styles */
+.modal h2 {
+    margin-bottom: 10px;
+    color: #00796b; /* Teal green */
+}
+
+.modal p {
+    margin: 10px 0;
+}
+
+/* Footer styling */
+footer {
+    background-color: #00796b; /* Teal green */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+}

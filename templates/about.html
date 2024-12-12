@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Healthcare Diagnosis Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <style>
+        /* Body styling with hospital and AI-themed background image */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'assets/images/laboratory-563423.jpg' %}"); /* Your hospital and AI-themed background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blur: 5px;  /* Optional: adds a blur effect for better text readability */
+        }
+
+        /* Semi-transparent overlay on the background to improve readability */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 150, 136, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            color: #009688;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-section .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .about-section .feature-list li {
+            background-color: #e0f2f1;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            color: #00796b;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-section .feature-list li::before {
+            content: '✔';
+            margin-right: 10px;
+            color: #00796b;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Healthcare Diagnosis Assistant</h1>
+    </header>
+    <br><br><br><br>
+
+    <main>
+        <section class="about-section">
+            <h2>About Our System</h2>
+            <p>Welcome to the Healthcare Diagnosis Assistant, a cutting-edge platform designed to assist healthcare providers in diagnosing and managing patients' health concerns. Our system leverages AI technology to streamline the diagnostic process, offering both healthcare professionals and patients a seamless experience.</p>
+
+            <p>Our platform allows doctors to input and analyze symptoms, predict potential diseases, and suggest next steps. With the help of machine learning, the system continuously improves its recommendations based on the feedback provided, ensuring that each diagnosis is more accurate than the last.</p>
+
+            <h3>Key Features:</h3>
+            <ul class="feature-list">
+                <li>AI-driven diagnostic tool that predicts diseases based on symptoms</li>
+                <li>Real-time suggestion of next steps including tests and treatments</li>
+                <li>Seamless integration with healthcare providers for a smooth workflow</li>
+                <li>User-friendly interface designed for both doctors and patients</li>
+                <li>Continuous learning from patient data to improve recommendations</li>
+                <li>Secure and private handling of patient information</li>
+            </ul>
+
+            <p>Our goal is to empower healthcare professionals to make faster, more informed decisions while ensuring that patients receive the best possible care. The Healthcare Diagnosis Assistant is constantly evolving, driven by the needs of users and the latest in medical research.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+    </footer>
+
+</body>
+</html>

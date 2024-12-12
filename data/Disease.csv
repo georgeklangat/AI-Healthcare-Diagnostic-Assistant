@@ -1,0 +1,44 @@
+Disease,Symptoms
+Flu,fever,cough,sore throat,runny nose,fatigue
+Measles,rash,fever,runny nose,red eyes,cough
+Dengue,fever,headache,muscle pain,joint pain,nausea
+Asthma,cough,shortness of breath,wheezing,chest tightness
+COVID-19,sore throat,fatigue,fever,cough,loss of taste,loss of smell
+Migraine,headache,nausea,dizziness,light sensitivity
+Malaria,headache,fever,chills,sweating
+Typhoid,fever,abdominal pain,diarrhea,weakness
+Pneumonia,fever,cough,chest pain,shortness of breath
+Bronchitis,cough,fatigue,shortness of breath,fever
+Tuberculosis,cough,weight loss,fever,night sweats
+Chickenpox,rash,fever,itching,fatigue
+Hepatitis,jaundice,abdominal pain,fatigue,nausea
+Sinusitis,headache,nasal congestion,facial pain,sore throat
+Meningitis,headache,stiff neck,fever,nausea
+Appendicitis,abdominal pain,fever,nausea,vomiting
+Ebola,fever,headache,muscle pain,diarrhea,bleeding
+Zika,fever,rash,joint pain,red eyes,muscle pain
+Cholera,diarrhea,dehydration,vomiting,weakness
+Anemia,fatigue,weakness,pale skin,shortness of breath
+Leukemia,fever,fatigue,weight loss,frequent infections
+Hypertension,headache,dizziness,shortness of breath,nosebleeds
+Diabetes,frequent urination,thirst,weight loss,fatigue
+Heart Attack,chest pain,shortness of breath,fatigue,sweating
+Stroke,weakness,numbness,slurred speech,vision loss
+Arthritis,joint pain,stiffness,swelling,weakness
+Osteoporosis,back pain,fractures,loss of height
+Epilepsy,seizures,confusion,staring spells,loss of consciousness
+Parkinson's,tremors,stiffness,slowed movement,poor balance
+Alzheimer's,memory loss,confusion,difficulty speaking,difficulty walking
+Depression,fatigue,sadness,sleep disturbances,loss of interest
+Anxiety,restlessness,rapid heartbeat,shortness of breath,sweating
+UTI,frequent urination,burning sensation,abdominal pain,fever
+Gallstones,abdominal pain,nausea,vomiting,fever
+Kidney Stones,back pain,blood in urine,nausea,painful urination
+Liver Cirrhosis,jaundice,fatigue,abdominal swelling,nausea
+HIV/AIDS,fever,weight loss,night sweats,swollen lymph nodes
+Rheumatic Fever,fever,joint pain,shortness of breath,rash
+Celiac Disease,abdominal pain,diarrhea,bloating,fatigue
+Crohn's Disease,diarrhea,abdominal pain,weight loss,fatigue
+Peptic Ulcer,abdominal pain,nausea,bloating,indigestion
+GERD,heartburn,regurgitation,chest pain,hoarseness
+Pancreatitis,abdominal pain,nausea,vomiting,fever

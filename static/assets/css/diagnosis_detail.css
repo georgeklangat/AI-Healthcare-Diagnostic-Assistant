@@ -1,0 +1,147 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f9f9; /* Light grayish background */
+    color: #333; /* Dark gray for text */
+    padding: 0 15px;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #81c4d4; /* Light Blue */
+    color: white;
+    text-align: center;
+    padding: 20px 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 5px solid #4a90a4; /* Accent Border */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #4a90a4; /* Accent Left Border */
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #4a90a4; /* Soft green-blue */
+}
+
+.card p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #388e3c; /* Dark Green */
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #2c6d2f; /* Darker Green */
+}
+
+/* Next Steps List */
+.next-steps ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.next-steps ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #333; /* Dark gray text */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #4a90a4; /* Soft Green-Blue */
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #ffcc00; /* Yellow Link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .card h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+
+    .next-steps ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .card h2 {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 8px 18px;
+    }
+}

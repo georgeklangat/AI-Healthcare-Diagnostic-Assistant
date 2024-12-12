@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Diagnosis Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Healthcare Diagnosis Assistant</h1>
+            <p class="tagline">AI-powered symptom checker for fast and accurate diagnosis</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="patient-info">
+            <div class="container">
+                <h2>Enter Patient Symptoms</h2>
+                <form method="POST" id="symptomForm" class="diagnostic-form">
+                    {% csrf_token %}
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patientName" placeholder="Enter patient's name" required><br>
+
+                    <label for="patient-age">Age:</label>
+                    <input type="number" id="patient-age" name="age" placeholder="Enter patient's age" required><br>
+
+                    <label for="patient-gender">Gender:</label>
+                    <select id="patient-gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select><br>
+
+                    <label for="symptoms">Symptoms (Write or Select):</label>
+                    <input type="text" id="symptom-input" name="symptoms" placeholder="Type a symptom" list="symptom-suggestions"><br>
+                    <datalist id="symptom-suggestions">
+                        {% for symptom in available_symptoms %}
+                            <option value="{{ symptom }}"></option>
+                        {% endfor %}
+                    </datalist><br>
+
+                    <button type="submit" class="btn-submit">Get Diagnosis</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+    </footer>
+</body>
+</html>

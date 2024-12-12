@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Diagnosis Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/homepage.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Healthcare Diagnosis Assistant</h1>
+            <p class="tagline">Empowering doctors with AI-powered diagnostic tools</p>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Intro Section -->
+        <section class="intro">
+            <div class="container">
+                <h2>Welcome to the Healthcare Diagnosis Assistant</h2>
+                <p>
+                    Our application helps healthcare professionals diagnose symptoms quickly and accurately with the help of artificial intelligence.
+                    Whether you're a doctor looking for quick diagnostic support or someone wanting to learn more about potential conditions, our platform is here for you.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'login' %}" class="cta-btn primary">Login</a>
+                    <a href="{% url 'signup' %}" class="cta-btn secondary">Start Session</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Section -->
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'login' %}">Doctors dashboard</a></li>
+                    <li><a href="{% url 'login' %}">Patients Dashboard</a></li>
+                    <li><a href="{% url 'signup' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Log in</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="feature-cards">
+                    <div class="card">
+                        <h3>AI-Powered Diagnostics</h3>
+                        <p>Our AI model helps doctors quickly diagnose symptoms and suggest potential diseases.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Fast and Accurate</h3>
+                        <p>Get instant results with high accuracy, helping healthcare providers make informed decisions.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Real-Time Updates</h3>
+                        <p>Stay updated with the latest patient information and diagnostic insights in real-time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Healthcare Diagnosis Assistant. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

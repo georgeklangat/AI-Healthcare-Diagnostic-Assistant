@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Results | Healthcare Diagnosis Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Reset */
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            font-size: 16px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Results Section */
+        .results h2 {
+            text-align: center;
+            color: #4facfe;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .results ul {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .results ul li {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .results ul li strong {
+            color: #00bfa5;
+        }
+
+        .results ul ul {
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid #00bfa5;
+        }
+
+        .results ul ul li {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Next Steps */
+        .results h3 {
+            margin-top: 2rem;
+            color: #00bfa5;
+            font-size: 1.8rem;
+        }
+
+        .results h3 + ul {
+            background: #e0f7fa;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .results h3 + ul li {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #4facfe;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .results ul {
+                padding: 1rem;
+            }
+
+            .results h2, .results h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Diagnosis Results</h1>
+    </div>
+</header>
+
+<main>
+    <section class="results">
+        <div class="container">
+            <h2>Diagnosis Suggestions</h2>
+            <ul>
+                <li><strong>Name:</strong> {{ patient_name }}</li>
+                <li><strong>Age:</strong> {{ patient_age }}</li>
+                <li><strong>Gender:</strong> {{ patient_gender }}</li>
+                <li><strong>Symptoms:</strong>
+                    <ul>
+                        {% for symptom in symptoms %}
+                            <li>{{ symptom }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% if predicted_disease %}
+                    <li><strong>Predicted Disease:</strong> {{ predicted_disease }}</li>
+                {% else %}
+                    <p>No predicted disease available. Please consult a healthcare professional.</p>
+                {% endif %}
+                {% if suggested_disease %}
+                    <li><strong>Suggested Disease:</strong> {{ suggested_disease }}</li>
+                {% else %}
+                    <p>No suggested disease available. Please consult a healthcare professional.</p>
+                {% endif %}
+            </ul>
+
+            <h3>Next Steps</h3>
+            <ul>
+                <li>Follow medical advice</li>
+                <li>Schedule further tests if required</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+</footer>
+</body>
+</html>

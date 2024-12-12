@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Healthcare Diagnosis Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Login to Your Account</h1>
+    </header>
+    <br><br>
+
+    <main>
+        <section class="login-form">
+            <!-- Display messages here -->
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li style="color: red;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Login form -->
+            <form id="login-form" method="POST">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+            </form>
+        </section>
+    </main>
+    <br><br><br><br><br>
+
+    <footer>
+        <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+    </footer>
+</body>
+</html>

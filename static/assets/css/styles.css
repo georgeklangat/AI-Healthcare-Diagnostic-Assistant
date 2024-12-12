@@ -1,0 +1,196 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and layout styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9; /* Light background to match the other design */
+    color: #333;
+    line-height: 1.6;
+    padding-top: 80px; /* Adjust for fixed header */
+}
+
+/* Container for central alignment */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #00796b; /* Matching the teal color */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+header:hover {
+    background-color: #004d40; /* Darker teal */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+header .tagline {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Main content section */
+main {
+    margin: 40px 0;
+}
+
+/* Form styling */
+.patient-info h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #00796b; /* Matching the teal color */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    align-self: flex-start;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input, select {
+    background-color: #fafafa;
+}
+
+button {
+    background-color: #00796b; /* Matching the teal color */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40; /* Darker teal */
+}
+
+/* Diagnosis result section */
+.diagnosis-result {
+    background-color: #f9f9f9;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#results {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #555;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    background-color: #00796b; /* Matching the teal color */
+    color: white;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 1rem;
+}
+
+footer a {
+    color: #cce7ff; /* Light blue link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header .tagline {
+        font-size: 1rem;
+    }
+
+    form {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    input, select, button {
+        font-size: 1rem;
+    }
+
+    #results {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header .tagline {
+        font-size: 0.9rem;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    #results {
+        font-size: 0.9rem;
+    }
+}

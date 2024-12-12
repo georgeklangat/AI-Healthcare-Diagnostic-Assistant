@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard | Healthcare Diagnosis Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
+</head>
+<body>
+<header>
+    <h1>Doctor Dashboard</h1>
+    <h4>Welcome back</h4>
+</header>
+
+<main>
+    <!-- Display success message if available -->
+    {% if success_message %}
+        <div class="alert alert-success">
+            {{ success_message }}
+        </div>
+    {% endif %}
+
+    <!-- Pending Cases Section -->
+    <section class="doctor-dashboard">
+        <h2>Pending Diagnosis Requests</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for case in pending_cases %}
+                    <tr>
+                        <td>{{ case.patient.name }}</td>
+                        <td>{{ case.patient.age }}</td>
+                        <td>{{ case.patient.gender }}</td>
+                        <td>
+                            <button class="update-btn" onclick="updateDiagnosisStatus('{{ case.id }}')">Update
+                                Diagnosis
+                            </button>
+                            <button class="view-btn" onclick="openModal('{{ case.patient.id }}')">View Details</button>
+                        </td>
+                    </tr>
+
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No pending diagnosis requests.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section class="notifications">
+        <h2>Notifications</h2>
+        <ul>
+            {% for notification in notifications %}
+                <li>{{ notification.message }}</li>
+            {% empty %}
+                <li>No new notifications.</li>
+            {% endfor %}
+
+            <!-- Recent cases -->
+            {% for case in recent_cases %}
+                <li>New case from <strong>{{ case.name }}</strong> - Submitted {{ case.created_at|timesince }} ago</li>
+            {% empty %}
+                <li>No new cases.</li>
+            {% endfor %}
+
+            <!-- Updated cases -->
+            {% for case in updated_cases %}
+                <li>Update: Case for <strong>{{ case.name }}</strong> - Diagnosis {{ case.diagnosis_status }}</li>
+            {% empty %}
+                <li>No recent updates.</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Links to Pending Diagnosis Results -->
+    <section class="diagnosis-links">
+        <h2>Quick Access to Pending Cases</h2>
+        <ul>
+            {% for case in pending_cases %}
+                <li>
+                    <a href="/diagnosis/{{ case.patient.id }}">
+                        Diagnosis Results for {{ case.patient.name }} - Status: {{ case.status }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No pending cases.</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+</main>
+
+<!-- Modal for patient details -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalPatientName">Patient Name</h2>
+        <p><strong>Age:</strong> <span id="modalPatientAge"></span></p>
+        <p><strong>Gender:</strong> <span id="modalPatientGender"></span></p>
+        <p><strong>Symptoms:</strong> <span id="modalPatientSymptoms"></span></p>
+        <p><strong>Additional Notes:</strong> <span id="modalPatientNotes"></span></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Healthcare Diagnosis Assistant</p>
+</footer>
+
+<script>
+    function openModal(patientId) {
+        // AJAX request to fetch patient details
+        fetch(`/fetch_patient_details/${patientId}/`)
+            .then(response => response.json())
+            .then(data => {
+                // Fill the modal with fetched data
+                document.getElementById('modalPatientName').innerText = data.name;
+                document.getElementById('modalPatientAge').innerText = data.age;
+                document.getElementById('modalPatientGender').innerText = data.gender;
+                document.getElementById('modalPatientSymptoms').innerText = data.symptoms;
+                document.getElementById('modalPatientNotes').innerText = data.notes;
+
+                // Show the modal
+                document.getElementById('detailsModal').style.display = 'block';
+            })
+            .catch(error => console.error('Error fetching patient details:', error));
+    }
+
+    function closeModal() {
+        document.getElementById('detailsModal').style.display = 'none';
+    }
+
+    function updateDiagnosisStatus(patientId) {
+        fetch(`/update_diagnosis_status/${patientId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrf-token]').getAttribute('content') // Ensure CSRF token is included
+            },
+            body: JSON.stringify({status: 'Confirmed'}) // Set the desired status
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Diagnosis status updated successfully.');
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    console.error('Failed to update status:', data.error || 'Unknown error');
+                    alert('Failed to update the diagnosis status. Check the logs for details.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the diagnosis status.');
+            });
+    }
+
+
+</script>
+
+</body>
+</html>

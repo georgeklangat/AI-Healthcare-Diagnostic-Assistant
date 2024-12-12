@@ -1,0 +1,168 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+/* Header Styles */
+header {
+    background-color: #00796b;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .tagline {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Main Section */
+main {
+    padding: 20px 0;
+}
+
+/* Intro Section */
+.intro {
+    background-color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro h2 {
+    color: #00796b;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-btn {
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-btn.primary {
+    background-color: #00796b;
+    color: white;
+}
+
+.cta-btn.secondary {
+    background-color: #0288d1;
+    color: white;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #004d40;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* Features Section */
+.features {
+    background-color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.features h2 {
+    color: #00796b;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    color: #00796b;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 1.1em;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #00796b;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-cards {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
