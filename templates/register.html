@@ -22,38 +22,21 @@
     </header>
 
     <main>
-        <section class="signup-form">
-            <form action="{% url 'signup' %}" method="POST">
+        <section class="signup-form co">
+            <form  method="POST">
                 {% csrf_token %}
 
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br>
-                {% if messages %}
-                    {% for message in messages %}
-                        <p class="error">{{ message }}</p>
-                    {% endfor %}
-                {% endif %}
+                <input type="text" id="username" name="username" required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
+                <input type="email" id="email" name="email" required="required"><br>
 
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br>
+                <input type="password" id="password" name="password" required="required"><br>
 
                 <label for="password2">Confirm Password:</label>
-                <input type="password" id="password2" name="password2" required><br>
-
-                <label for="role">Role:</label>
-                <select id="role" name="role" required>
-                    <option value="patient">Patient</option>
-                    <option value="doctor">Doctor</option>
-                </select><br>
-
-                <!-- Doctor ID field -->
-                <div id="doctor-id-field" class="hidden">
-                    <label for="doctor-id">Doctor ID Number:</label>
-                    <input type="text" id="doctor-id" name="doctor_id" placeholder="Enter Doctor ID number"><br>
-                </div>
+                <input type="password" id="password2" name="password2" required="required"><br>
 
                 <button type="submit">Sign Up</button>
                 <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
