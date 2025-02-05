@@ -1,7 +1,7 @@
 # admin.py
 from django.contrib import admin
 from django.contrib.auth.models import User
-from .models import Profile, Patient1, Diagnosis, Notification
+from .models import Profile, Patient1, Diagnosis, Notification, Register
 
 
 # Inline Profile Admin Model
@@ -32,3 +32,4 @@ admin.site.register(Profile)
 admin.site.register(Patient1)
 admin.site.register(Diagnosis)
 admin.site.register(Notification)
+admin.site.register(Register)
