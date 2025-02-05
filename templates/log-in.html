@@ -25,8 +25,9 @@
             {% endif %}
 
             <!-- Login form -->
-            <form id="login-form" method="POST">
+            <form id="login-form" method="POST" action="{% url 'home' %}">
                 {% csrf_token %}
+
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br>
 
@@ -34,7 +35,7 @@
                 <input type="password" id="password" name="password" required><br>
 
                 <button type="submit">Login</button>
-                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+                <p>Don't have an account? <a href="{% url 'register' %}">Sign up here</a></p>
             </form>
         </section>
     </main>

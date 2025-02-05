@@ -6,6 +6,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('doctorsDashboard/', views.doctorsDashboard, name='doctorsDashboard'),
     path('result/', views.result, name='result'),
 
     path('patient_dashboard/', views.patient_input, name='patient_dashboard'),

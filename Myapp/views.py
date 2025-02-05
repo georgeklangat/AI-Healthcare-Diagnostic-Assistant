@@ -1,15 +1,17 @@
 import json
-
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse, request
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
+from .models import Profile, Patient1, Diagnosis, Notification, Register
 
-from .models import Profile, Patient1, Diagnosis, Notification, Signup
+import pandas as pd
+from django.shortcuts import render
+import joblib
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+import os
+from django.conf import settings
 
 
 def home(request):
@@ -18,6 +20,20 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def doctorsDashboard(request):
+    if request.method == "POST":
+        if Register.objects.filter(
+                username=request.POST['username'],
+                password=request.POST['password']
+
+        ).exists():
+            return render(request, 'homepage.html')
+        else:
+            return render(request, 'log-in.html')
+    else:
+        return render(request, 'doctors_dashboard.html')
 
 
 @login_required
@@ -72,100 +88,20 @@ def fetch_patient_details(request, patient_id):
 def result(request):
     return render(request, 'results.html')
 
-
-# def signup(request):
-#     if request.method == 'POST':
-#         register = Signup(
-#             username = request.POST['username'],
-#             password = request.POST['password'],
-#             email = request.POST['email'],
-#             role = request.POST['role'],
-#         )
-#         register.save()
-#         return redirect('login')
-#     else:
-#         return render(request,'register.html')
-    # if request.method == 'POST':
-    #     username = request.POST.get('username')
-    #     email = request.POST.get('email')
-    #     password1 = request.POST.get('password')
-    #     password2 = request.POST.get('password2')  # Password confirmation
-    #     role = request.POST.get('role')  # 'doctor' or 'patient'
-    #     doctor_id = request.POST.get('doctor_id') if role == 'doctor' else None
-    #
-    #     # Validation: Ensure passwords match
-    #     if not password1:
-    #         messages.error(request, "Password is required.")
-    #         return redirect('signup')
-    #
-    #     if password1 != password2:
-    #         messages.error(request, "Passwords do not match.")
-    #         return redirect('signup')
-    #
-    #     # if len(password1) < 8:
-    #     #     messages.error(request, "Password should be at least 8 characters long.")
-    #     #     return redirect('signup')
-    #
-    #     if User.objects.filter(username=username).exists():
-    #         messages.error(request, 'Username already taken.')
-    #         return redirect('signup')
-    #     # elif User.objects.filter(email=email).exists():
-    #     #     messages.error(request, 'Email already in use.')
-    #     #     return redirect('signup')
-    #
-    #     # Check for Doctor ID if role is 'doctor'
-    #     if role == 'doctor' and not doctor_id:
-    #         messages.error(request, 'Doctor ID is required for doctors.')
-    #         return redirect('signup')
-    #
-    #     try:
-    #         # Create User
-    #         user = User.objects.create_user(username=username, email=email, password=password1)
-    #
-    #         # Create Profile and link to user
-    #         profile = Profile.objects.create(user=user, role=role)
-    #         if role == 'doctor':
-    #             profile.doctor_id = doctor_id
-    #         profile.save()
-    #
-    #
-    #     except Exception as e:
-    #         messages.error(request, f"An error occurred: {str(e)}")
-    #         return redirect('signup')
-    #
-    #     messages.success(request, 'Signup successful! You are now logged in.')
-    #     return redirect('/login')  # Fallback redirect if no specific role
-    #
-    # return render(request, 'register.html')
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'POST':
+        users = Register(
+            firstName = request.POST['firstName'],
+            secondName = request.POST['secondName'],
+            email = request.POST['email'],
+            password = request.POST['password']
+        )
+        users.save()
+        return redirect('/login')
+    else:
+        return render(request, 'register.html')
 def login(request):
     return render(request, 'log-in.html')
-
-# def login_view(request):
-#     # Handle POST request
-#     if request.method == "POST":
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         user = authenticate(request, username=username, password=password)
-#
-#         if user:
-#             login(request, user)
-#             # Redirect based on user role
-#             if hasattr(user, 'profile'):  # Assuming you have a Profile model linked to the User
-#                 if user.profile.role == 'doctor':
-#                     return redirect('/dashboard')  # Replace with your doctor dashboard URL
-#                 else:
-#                     return redirect('/patient_dashboard')  # Replace with your patient dashboard URL
-#             else:
-#                 messages.error(request, "Invalid username or password!")
-#                 return render(request, 'log-in.html')  # Render login page again on error
-#         else:
-#             messages.error(request, "Invalid username or password!")
-#             return render(request, 'log-in.html')  # Render login page again on error
-#     else:
-#         # Handle GET request, just render the login page
-#         return render(request, 'log-in.html')
 
 
 @login_required
@@ -188,15 +124,6 @@ def patient_input(request):
         return redirect('predict_view')
     else:
         return render(request, 'patient_dashboard.html',{'user': request.user})
-
-
-import pandas as pd
-from django.shortcuts import render
-import joblib
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-import os
-from django.conf import settings
 
 # Load the trained model, vectorizer, and label encoder from local directory
 rf_model = joblib.load(settings.MODEL_FILE_PATH)

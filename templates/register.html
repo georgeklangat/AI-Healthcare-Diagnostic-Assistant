@@ -26,6 +26,12 @@
             <form  method="POST">
                 {% csrf_token %}
 
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="firstName" required>
+
+                <label for="second-name">Second Name:</label>
+                <input type="text" id="second-name" name="secondName" required>
+
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
 
@@ -35,8 +41,6 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required="required"><br>
 
-                <label for="password2">Confirm Password:</label>
-                <input type="password" id="password2" name="password2" required="required"><br>
 
                 <button type="submit">Sign Up</button>
                 <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
